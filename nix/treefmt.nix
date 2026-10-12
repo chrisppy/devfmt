@@ -8,6 +8,12 @@ _: {
         ".git"
         ".gitattributes"
         ".gitignore"
+        "*.jpg"
+        "*.patch"
+        "*.png"
+        "*.svg"
+        "**/.gitkeep"
+        "secrets/**"
       ];
     };
   };
