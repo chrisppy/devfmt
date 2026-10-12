@@ -22,6 +22,7 @@
       sharedModule = {
         imports = [
           inputs.treefmt-nix.flakeModule
+          inputs.flake-parts.flakeModules.modules
           (inputs.import-tree ./nix)
         ];
 
