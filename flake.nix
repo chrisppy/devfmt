@@ -23,6 +23,7 @@
       ];
       flake.flakeModules.default = {
         imports = [
+          inputs.treefmt-nix.flakeModule
           (inputs.import-tree ./nix)
         ];
       };
