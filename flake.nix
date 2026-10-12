@@ -12,7 +12,7 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    import-tree.url = "github:vic/import-tree";
+    import-tree.url = "github:denful/import-tree/v0.2.0";
     nixfmt-rs.url = "github:Mic92/nixfmt-rs/0.5.3";
   };
 
@@ -40,9 +40,11 @@
 
       flake = {
         flakeModules.default = sharedModule;
-        inherit (inputs) systems;
-        inherit (inputs) flake-parts;
-        inherit (inputs) import-tree;
+        inherit (inputs)
+          systems
+          flake-parts
+          import-tree
+          ;
       };
 
       perSystem =
