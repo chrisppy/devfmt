@@ -5,6 +5,7 @@ _: {
       on-unmatched = "fatal";
       global.excludes = [
         "LICENSE"
+        "LICENSE-*"
         ".git"
         ".gitattributes"
         ".gitignore"
