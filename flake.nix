@@ -19,6 +19,7 @@
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
+        inputs.treefmt-nix.flakeModule
         (inputs.import-tree ./nix)
       ];
       flake.flakeModules.default = {
