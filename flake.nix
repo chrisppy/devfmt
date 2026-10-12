@@ -1,5 +1,5 @@
 {
-  description = "My treefmt setup";
+  description = "My flake setup";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
