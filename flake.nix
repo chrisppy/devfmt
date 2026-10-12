@@ -38,7 +38,12 @@
 
       imports = [ sharedModule ];
 
-      flake.flakeModules.default = sharedModule;
+      flake = {
+        flakeModules.default = sharedModule;
+        inherit (inputs) systems;
+        inherit (inputs) flake-parts;
+        inherit (inputs) import-tree;
+      };
 
       perSystem =
         { config, ... }:
