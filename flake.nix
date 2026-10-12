@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/default";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +19,6 @@
   outputs =
     inputs:
     let
-      # Shared module configuration defined once
       sharedModule = {
         imports = [
           inputs.treefmt-nix.flakeModule
@@ -34,13 +34,12 @@
       };
     in
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      # 1. Use the shared module locally in devfmt
+      systems = import inputs.systems;
+
       imports = [ sharedModule ];
 
-      # 2. Export the exact same module for external projects
       flake.flakeModules.default = sharedModule;
 
-      # 3. Expose the formatter wrapper locally
       perSystem =
         { config, ... }:
         {
