@@ -8,9 +8,15 @@ _: {
       deno = {
         enable = true;
         includes = [
+          "*.css"
+          "*.json"
+          "*.jsonc"
           "*.markdown"
           "*.md"
+          "*.sass"
           "*.scss"
+          "*.yaml"
+          "*.yml"
         ];
       };
       djlint = {
