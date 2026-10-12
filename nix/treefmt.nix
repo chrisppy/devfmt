@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+_: {
   perSystem.treefmt = {
     projectRootFile = "flake.nix";
     settings = {

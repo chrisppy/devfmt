@@ -17,17 +17,30 @@
 
   outputs =
     inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [
-        inputs.treefmt-nix.flakeModule
-        (inputs.import-tree ./nix)
-      ];
-      flake.flakeModules.default = {
+    let
+      # Shared module configuration defined once
+      sharedModule = {
         imports = [
           inputs.treefmt-nix.flakeModule
           (inputs.import-tree ./nix)
         ];
+
+        perSystem =
+          { pkgs, ... }:
+          {
+            treefmt.programs.nixfmt.package =
+              inputs.nixfmt-rs.packages.${pkgs.stdenv.hostPlatform.system}.default;
+          };
       };
+    in
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      # 1. Use the shared module locally in devfmt
+      imports = [ sharedModule ];
+
+      # 2. Export the exact same module for external projects
+      flake.flakeModules.default = sharedModule;
+
+      # 3. Expose the formatter wrapper locally
       perSystem =
         { config, ... }:
         {
