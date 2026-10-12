@@ -12,7 +12,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
-    nixfmt-rs.url = "github:Mic92/nixfmt-rs/0.1.2";
+    nixfmt-rs.url = "github:Mic92/nixfmt-rs/0.5.3";
   };
 
   outputs =
@@ -21,5 +21,15 @@
       imports = [
         (inputs.import-tree ./nix)
       ];
+      flake.flakeModules.default = {
+        imports = [
+          (inputs.import-tree ./nix)
+        ];
+      };
+      perSystem =
+        { config, ... }:
+        {
+          formatter = config.treefmt.build.wrapper;
+        };
     };
 }
