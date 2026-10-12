@@ -33,6 +33,27 @@
               inputs.nixfmt-rs.packages.${pkgs.stdenv.hostPlatform.system}.default;
           };
       };
+
+      mkFlake =
+        args@{ inputs, ... }:
+        userModule:
+        inputs.flake-parts.lib.mkFlake args (
+          { ... }:
+          {
+            systems = import inputs.systems;
+
+            imports = [
+              sharedModule
+              (if builtins.isList userModule then { imports = userModule; } else userModule)
+            ];
+
+            perSystem =
+              { system, ... }:
+              {
+                _module.args.pkgs = inputs.nixpkgs.legacyPackages.${system};
+              };
+          }
+        );
     in
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
@@ -41,11 +62,14 @@
 
       flake = {
         flakeModules.default = sharedModule;
-        inherit (inputs)
-          systems
-          flake-parts
-          import-tree
-          ;
+
+        lib = {
+          # Main builder wrapper
+          inherit mkFlake;
+
+          # Re-export import-tree helper function
+          importTree = inputs.import-tree;
+        };
       };
 
       perSystem =
