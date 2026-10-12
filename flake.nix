@@ -1,6 +1,5 @@
 {
   description = "My flake setup";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default";
@@ -17,30 +16,30 @@
   };
 
   outputs =
-    inputs:
+    devfmtInputs:
     let
       sharedModule = {
         imports = [
-          inputs.treefmt-nix.flakeModule
-          inputs.flake-parts.flakeModules.modules
-          (inputs.import-tree ./nix)
+          devfmtInputs.treefmt-nix.flakeModule
+          devfmtInputs.flake-parts.flakeModules.modules
+          (devfmtInputs.import-tree ./nix)
         ];
 
         perSystem =
           { pkgs, ... }:
           {
             treefmt.programs.nixfmt.package =
-              inputs.nixfmt-rs.packages.${pkgs.stdenv.hostPlatform.system}.default;
+              devfmtInputs.nixfmt-rs.packages.${pkgs.stdenv.hostPlatform.system}.default;
           };
       };
 
       mkFlake =
         args@{ inputs, ... }:
         userModule:
-        inputs.flake-parts.lib.mkFlake args (
+        devfmtInputs.flake-parts.lib.mkFlake args (
           { ... }:
           {
-            systems = import inputs.systems;
+            systems = import devfmtInputs.systems;
 
             imports = [
               sharedModule
@@ -55,8 +54,8 @@
           }
         );
     in
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = import inputs.systems;
+    devfmtInputs.flake-parts.lib.mkFlake { inputs = devfmtInputs; } {
+      systems = import devfmtInputs.systems;
 
       imports = [ sharedModule ];
 
@@ -64,11 +63,8 @@
         flakeModules.default = sharedModule;
 
         lib = {
-          # Main builder wrapper
           inherit mkFlake;
-
-          # Re-export import-tree helper function
-          importTree = inputs.import-tree;
+          importTree = devfmtInputs.import-tree;
         };
       };
 
