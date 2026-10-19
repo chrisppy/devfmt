@@ -6,6 +6,7 @@ _: {
       global.excludes = [
         "LICENSE"
         "LICENSE-*"
+        "qmldir"
         ".git"
         ".gitattributes"
         ".gitignore"
