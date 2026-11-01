@@ -12,7 +12,13 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     import-tree.url = "github:denful/import-tree/v0.2.0";
-    nixfmt-rs.url = "github:Mic92/nixfmt-rs/0.5.3";
+    nixfmt-rs = {
+      url = "github:Mic92/nixfmt-rs/0.5.3";
+      # Build nixfmt-rs with our nixpkgs instead of locking its own copy
+      # (and its own Rust toolchain) in every flake that uses devfmt.
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+    };
   };
 
   outputs =
