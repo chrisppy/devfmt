@@ -80,7 +80,8 @@ everywhere:
 - `LICENSE`, `LICENSE-*`, and `LICENSES/**` (license texts, which
   [REUSE](https://reuse.software) keeps verbatim)
 - `.git`, `.gitattributes`, `.gitignore`, `**/.gitkeep`
-- images: `*.jpg`, `*.png`, `*.svg`
+- images and fonts: `*.avif`, `*.gif`, `*.ico`, `*.jpeg`, `*.jpg`, `*.png`,
+  `*.svg`, `*.webp`, `*.woff`, `*.woff2`
 - `*.patch`, `**/qmldir`, `secrets/**`
 
 To exclude more in a project, add to the list (it merges with devfmt's):
