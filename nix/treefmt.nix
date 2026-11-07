@@ -6,6 +6,8 @@ _: {
       global.excludes = [
         "LICENSE"
         "LICENSE-*"
+        # REUSE (https://reuse.software) keeps license texts here.
+        "LICENSES/**"
         ".git"
         ".gitattributes"
         ".gitignore"
