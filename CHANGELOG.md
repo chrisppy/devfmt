@@ -8,6 +8,14 @@ Unreleased. Routine flake input updates are left out.
 
 ## Unreleased
 
+### 2026-11-09
+
+#### Added
+
+- Kotlin (`.kt` and `.kts`, including Gradle build scripts) is formatted with
+  ktfmt. The Gradle wrapper (`gradlew`, `gradlew.bat`, `gradle/wrapper/**`) and
+  `gradle.properties` are excluded.
+
 ### 2026-11-07
 
 #### Added

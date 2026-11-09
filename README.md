@@ -62,6 +62,7 @@ treefmt runs every formatter that matches a file, in priority order.
 | Go | gofmt, gofumpt, goimports, golangci-lint |
 | Shell, fish | shellcheck, fish_indent |
 | Swift | swift-format |
+| Kotlin (`.kt`, `.kts`) | ktfmt |
 | QML | qmlformat |
 | TOML | taplo, with aligned entries and sorted keys |
 | justfiles | `just --fmt` |
@@ -82,6 +83,8 @@ everywhere:
 - `.git`, `.gitattributes`, `.gitignore`, `**/.gitkeep`
 - images and fonts: `*.avif`, `*.gif`, `*.ico`, `*.jpeg`, `*.jpg`, `*.png`,
   `*.svg`, `*.webp`, `*.woff`, `*.woff2`
+- the Gradle wrapper and settings: `gradlew`, `gradlew.bat`,
+  `gradle/wrapper/**`, `gradle.properties`
 - `*.patch`, `**/qmldir`, `secrets/**`
 
 To exclude more in a project, add to the list (it merges with devfmt's):
