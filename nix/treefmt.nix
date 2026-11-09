@@ -13,6 +13,7 @@ _: {
         ".gitignore"
         # Images and other binary assets.
         "*.avif"
+        "*.desktop"
         "*.gif"
         "*.ico"
         "*.jpeg"
