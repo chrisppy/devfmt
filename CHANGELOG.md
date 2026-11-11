@@ -12,9 +12,8 @@ Unreleased. Routine flake input updates are left out.
 
 #### Added
 
-- Apple property lists (`*.plist`, `*.entitlements`) are formatted with
-  xmllint. A macOS entitlements file used to fail `nix fmt` with "no formatter
-  for path".
+- Apple property lists (`*.plist`, `*.entitlements`) are formatted with xmllint.
+  A macOS entitlements file used to fail `nix fmt` with "no formatter for path".
 
 ### 2026-11-09
 

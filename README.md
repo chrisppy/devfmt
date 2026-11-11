@@ -55,7 +55,7 @@ Flakes using the module get `formatter.<system>` (for `nix fmt`) and
 treefmt runs every formatter that matches a file, in priority order.
 
 | Files | Formatters |
-| ---------------------------------- | --------------------------------------------------------------------------------------------- |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | Nix | deadnix, statix, nixf-diagnose, then nixfmt ([nixfmt-rs](https://github.com/Mic92/nixfmt-rs)) |
 | Rust | rustfmt |
 | C, C++ | clang-format, clang-tidy |
