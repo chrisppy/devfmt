@@ -67,7 +67,7 @@ treefmt runs every formatter that matches a file, in priority order.
 | TOML | taplo, with aligned entries and sorted keys |
 | justfiles | `just --fmt` |
 | LaTeX | latexindent, texfmt |
-| XML | xmllint |
+| XML, property lists (`.plist`, `.entitlements`) | xmllint |
 | Markdown | deno fmt, then mdformat |
 | JSON, JSONC, YAML, CSS, SCSS, Sass | deno fmt |
 | HTML | djlint (Tera profile), which also lints |
