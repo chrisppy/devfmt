@@ -10,6 +10,12 @@ Unreleased. Routine flake input updates are left out.
 
 ### 2026-11-12
 
+#### Added
+
+- Apple privacy manifests (`PrivacyInfo.xcprivacy`) are formatted with xmllint,
+  like the other property lists. They used to fail `nix fmt` with "no formatter
+  for path".
+
 #### Changed
 
 - Web app manifests (`*.webmanifest`) and static-host routing files
