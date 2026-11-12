@@ -20,6 +20,7 @@ _: {
         "*.jpg"
         "*.png"
         "*.svg"
+        "*.webmanifest"
         "*.webp"
         "*.woff"
         "*.woff2"
