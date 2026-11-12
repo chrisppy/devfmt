@@ -8,6 +8,14 @@ Unreleased. Routine flake input updates are left out.
 
 ## Unreleased
 
+### 2026-11-12
+
+#### Changed
+
+- Web app manifests (`*.webmanifest`) and static-host routing files
+  (`_redirects`, `_headers`) are skipped. They used to fail `nix fmt` with "no
+  formatter for path".
+
 ### 2026-11-11
 
 #### Added

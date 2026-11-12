@@ -21,6 +21,9 @@ _: {
         "*.png"
         "*.svg"
         "*.webmanifest"
+        # Cloudflare Pages / Netlify routing files: no extension, no formatter.
+        "**/_headers"
+        "**/_redirects"
         "*.webp"
         "*.woff"
         "*.woff2"
