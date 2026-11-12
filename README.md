@@ -17,7 +17,7 @@ Add devfmt as an input and build the flake with `devfmt.lib.mkFlake`:
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     devfmt = {
-      url = "github:chrisppy/devfmt";
+      url = "github:red-oxide/devfmt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
