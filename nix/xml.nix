@@ -9,5 +9,13 @@ _: {
       "*.plist"
       "*.xcprivacy"
     ];
+
+    # Zola's XML templates (atom.xml, rss.xml, sitemap.xml) are Tera, not XML:
+    # xmllint can't parse them and djlint would mangle them, so they are kept
+    # as written.
+    settings.global.excludes = [
+      "templates/*.xml"
+      "templates/**/*.xml"
+    ];
   };
 }
